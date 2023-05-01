@@ -1,0 +1,130 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: lightgoldenrodyellow;
+}
+
+#listings{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#container{
+    width: 600px;
+    margin: 20px;
+}
+
+#header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 50px;
+    margin-top: 10px;
+}
+
+#header img{
+    border-radius: 5px;
+}
+
+#logo-name{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    text-transform: capitalize;
+}
+
+.data-capture{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+.form_items{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+}
+
+.form-group{
+    margin-bottom: 10px;
+}
+
+.btn{
+    background-color: coral;
+    color: white;
+    outline: transparent;
+    height: 30px;
+    width: 100px;
+}
+
+#clearBtn{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#clearBtn span{
+    font-size: .8rem;
+}
+
+input[type="text"]{
+    /* outline: none; */
+    width: 100%;
+    height: 40px;
+    border-radius: 5px;
+    color: grey;
+    font-size: 1.1rem;
+    border: 1px solid lightcoral;
+    box-shadow: 0 3px 3px 0;
+    background: transparent;
+    /* border-bottom: 2px solid grey; */
+    margin-bottom: 5px;
+    padding: 5px;
+}
+
+#select-priority{
+    padding: 5px;
+}
+
+#checkbox{
+    width: 35px;
+    height: 20px;
+}
+
+#list-items{
+    height: auto;
+    border: 1px solid lightgray;
+    margin-bottom: 10px;
+}
+
+
+.list-item{
+    border: 1px solid lightgray;
+    padding: 5px;
+    margin: 5px;
+    display: flex;
+    justify-content: space-between;
+    border-radius: 5px
+}
+
+.list-item button{
+    color: red;
+    font-weight: 900;
+    border: none;
+    background-color: rgba(0, 0, 0, 0.2);
+    padding: 3px 7px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#list-section-header{
+    border-bottom: 2px solid lightgray;
+    margin-bottom: 10px;
+}
+
+.priority{
+    border-left: 5px solid rebeccapurple;
+}
