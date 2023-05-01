@@ -24,17 +24,18 @@ const addItem = (e) =>{
     li.textContent = formData.get("item-input");
     
     // create Button
-    const button = createButton("btn remove-item");
+    const button = createButton("remove-item deleteBtn");
 
     li.appendChild(button);
-    console.log(li);
     list.appendChild(li);
+
+    itemInput.value = "";
 }
 
 const createButton = (classes) =>{
     const button = document.createElement("button");
     button.className = classes;
-    const icon = createIcon("fa fa-trash");
+    const icon = createIcon("fa fa-times");
     button.appendChild(icon);
     return button;
 }
@@ -45,10 +46,16 @@ const createIcon = (classes) =>{
     return icon;
 }
 
-
+const removeItem = (e) =>{
+    if(e.target.parentElement.classList.contains("remove-item")){
+        e.target.parentElement.parentElement.remove();
+    }
+}
 
 
 // Event Listerners
 
 form.addEventListener("submit", addItem);
+
+list.addEventListener("click", removeItem);
 

@@ -56,8 +56,12 @@ body{
     background-color: coral;
     color: white;
     outline: transparent;
-    height: 30px;
-    width: 100px;
+    padding: 5px;
+}
+
+.deleteBtn{
+    background: transparent;
+
 }
 
 #clearBtn{
@@ -66,9 +70,6 @@ body{
     align-items: center;
 }
 
-#clearBtn span{
-    font-size: .8rem;
-}
 
 input[type="text"]{
     /* outline: none; */
