@@ -3,6 +3,8 @@ const list = document.getElementById("list-items");
 const itemInput = document.getElementById("item-input");
 const priority = document.getElementById("select-priority");
 const checkbox = document.getElementById("checkbox");
+const clearBtn = document.getElementById("clearBtn");
+const searchField = document.getElementById("search-input");
 
 
 // functions
@@ -30,6 +32,8 @@ const addItem = (e) =>{
     list.appendChild(li);
 
     itemInput.value = "";
+
+    checkUI();
 }
 
 const createButton = (classes) =>{
@@ -48,9 +52,37 @@ const createIcon = (classes) =>{
 
 const removeItem = (e) =>{
     if(e.target.parentElement.classList.contains("remove-item")){
-        e.target.parentElement.parentElement.remove();
+        if(confirm("Are you sure?")){
+            e.target.parentElement.parentElement.remove();
+        }
+
+        checkUI();
     }
 }
+
+const clearItems = () =>{
+    while (list.firstChild){
+        list.removeChild(list.lastChild)
+
+        checkUI();
+    }
+}
+
+const checkUI = () =>{
+   const allListsItems = document.querySelectorAll("li");
+
+   if(allListsItems.length === 0){
+        searchField.style.display = "none";
+        clearBtn.style.display = "none";
+    }else{
+        searchField.style.display = "block";
+        clearBtn.style.display = "block";
+    };
+
+    
+}
+
+
 
 
 // Event Listerners
@@ -58,4 +90,9 @@ const removeItem = (e) =>{
 form.addEventListener("submit", addItem);
 
 list.addEventListener("click", removeItem);
+
+clearBtn.addEventListener("click", clearItems);
+
+
+checkUI();
 

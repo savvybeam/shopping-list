@@ -53,10 +53,12 @@ body{
 }
 
 .btn{
-    background-color: coral;
+    background-color: black;
     color: white;
     outline: transparent;
-    padding: 5px;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
 }
 
 .deleteBtn{
@@ -65,25 +67,32 @@ body{
 }
 
 #clearBtn{
-    display: flex;
+    /* display: flex;
     justify-content: space-around;
-    align-items: center;
+    align-items: center; */
+    width: 100%;
+    margin-top: 20px;
 }
 
 
 input[type="text"]{
-    /* outline: none; */
+    outline: none;
     width: 100%;
     height: 40px;
     border-radius: 5px;
     color: grey;
     font-size: 1.1rem;
-    border: 1px solid lightcoral;
-    box-shadow: 0 3px 3px 0;
+    border: 1px solid lightgrey;
     background: transparent;
     /* border-bottom: 2px solid grey; */
     margin-bottom: 5px;
     padding: 5px;
+}
+
+#search-input{
+    box-shadow: none;
+    border: none;
+    outline: none;
 }
 
 #select-priority{
@@ -93,12 +102,6 @@ input[type="text"]{
 #checkbox{
     width: 35px;
     height: 20px;
-}
-
-#list-items{
-    height: auto;
-    border: 1px solid lightgray;
-    margin-bottom: 10px;
 }
 
 
