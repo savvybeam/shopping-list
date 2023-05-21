@@ -1,8 +1,6 @@
 const form = document.getElementById("my-form");
 const list = document.getElementById("list-items");
 const itemInput = document.getElementById("item-input");
-// const priority = document.getElementById("select-priority");
-// const checkbox = document.getElementById("checkbox");
 const clearBtn = document.getElementById("clearBtn");
 const searchField = document.getElementById("search-input");
 
