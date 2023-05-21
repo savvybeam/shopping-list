@@ -98,16 +98,16 @@ const createIcon = (classes) =>{
 
 const onItemClicked = (e) =>{
 
-    removeItemFromUI(e)
+    removeItemFromUI(e.target.parentElement)
 
 }
 
 const removeItemFromUI = (item) =>{
-    if(item.target.parentElement.classList.contains("remove-item")){
+    if(item.classList.contains("remove-item")){
         if(confirm("Are you sure?")){
 
             //remove item from DOM/UI
-            item.target.parentElement.parentElement.remove();
+            item.parentElement.remove();
 
             //remove item from local storage 
             removeItemFromStorage(item);
@@ -122,21 +122,24 @@ const removeItemFromUI = (item) =>{
 const removeItemFromStorage = (item) =>{
     itemsFromStorage = getItemsFromStorage();
 
-    indexToRemove = itemsFromStorage.indexOf(item.target.parentElement.parentElement.firstChild.textContent);
+    // indexToRemove = itemsFromStorage.indexOf(item.target.parentElement.parentElement.firstChild.textContent);
+    // itemsFromStorage.splice(indexToRemove, 1);
+    // localStorage.setItem("items", JSON.stringify(itemsFromStorage));
 
-    itemsFromStorage.splice(indexToRemove, 1);
+    itemsFromStorage = itemsFromStorage.filter(data => data !== item.parentElement.firstChild.textContent)
 
-    localStorage.setItem("items", JSON.stringify(itemsFromStorage));
+    localStorage.setItem("items",JSON.stringify(itemsFromStorage));
+
+
 }
 
 const clearItems = () =>{
     while (list.firstChild){
         list.removeChild(list.lastChild)
-
-        localStorage.removeItem("items");
-
-        checkUI();
     }
+
+    localStorage.removeItem("items");
+    checkUI();
 }
 
 const checkUI = () =>{
@@ -175,7 +178,7 @@ const filterItems = (e) =>{
 
 form.addEventListener("submit", onAddItemSubmit);
 
-list.addEventListener("click", removeItemFromUI);
+list.addEventListener("click", onItemClicked);
 
 clearBtn.addEventListener("click", clearItems);
 
