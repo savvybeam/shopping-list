@@ -35,14 +35,6 @@ const getShoppingItem = (e) => {
 
 shoppingItem.addEventListener("input", getShoppingItem);
 
-//get item priority
-const getItemPriority = (e) => {
-    priorityValue = e.target.checked;
-    // console.log(e.target.checked);
-}
-
-itemPriority.addEventListener("input", getItemPriority);
-
 
 //validate input
 
@@ -78,7 +70,7 @@ const addData = (e) => {
     displayList();
 
     shoppingItem.value = "";
-    itemPriority.checked = false;
+
     priorityValue = undefined;
 
 }
@@ -152,16 +144,16 @@ const searchItem = (e) =>{
 
    
     const filteredItems = shoppingItems.filter( (item)=>{
-        //console.log(item.itemName);
-        console.log(e.target.value);
-        return item.itemName === e.target.value;    
+
+        console.log(item.itemName.indexOf(e.target.value) === -1);
+        
     } );
 
 
 
 }
 
-searchField.addEventListener("keypress", searchItem);
+searchField.addEventListener("input", searchItem);
 
 
 // clear shopping list
