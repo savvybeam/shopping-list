@@ -61,6 +61,10 @@ body{
     border: none;
 }
 
+.editMode{
+    color: grey;
+}
+
 .deleteBtn{
     background: transparent;
 

@@ -5,6 +5,7 @@ const clearBtn = document.getElementById("clearBtn");
 const searchField = document.getElementById("search-input");
 
 let itemsFromStorage;
+let isEditMode = false;
 
 // functions
 
@@ -32,11 +33,28 @@ const getItemsFromStorage = () =>{
 }
 
 const onAddItemSubmit = (e) =>{
+
+    itemsFromStorage = getItemsFromStorage();
+
     e.preventDefault();
 
     if(itemInput.value === ""){
         alert("Item field cannot be empty!");
         return;
+    }
+
+    if(itemsFromStorage.includes(itemInput.value)){
+        alert("Item already exists in the list")
+
+        return;
+    }
+
+    //check if in edit mode
+
+    if(isEditMode){
+        const itemToEdit = list.querySelector(".editMode");
+        itemToEdit.remove();
+        removeItemFromStorage(itemToEdit.textContent);
     }
 
     // collect form data
@@ -48,7 +66,6 @@ const onAddItemSubmit = (e) =>{
 
     addItemToStorage(item);
    
-
     itemInput.value = "";
 
     checkUI();
@@ -76,8 +93,9 @@ const addItemToStorage = (item) =>{
 
     itemsFromStorage = getItemsFromStorage();
 
-    itemsFromStorage.push(item);
-    localStorage.setItem("items", JSON.stringify(itemsFromStorage));
+    // check if item already exists
+        itemsFromStorage.push(item);
+        localStorage.setItem("items", JSON.stringify(itemsFromStorage));   
 
 }
 
@@ -97,37 +115,56 @@ const createIcon = (classes) =>{
 
 
 const onItemClicked = (e) =>{
+    //if icon on button was clicked
+    if(e.target.parentElement.classList.contains("remove-item")){
+        removeItemFromUI(e.target.parentElement.parentElement)
+    }else{
+        //if list item was clicked
+        setItemToEdit(e)
+        
+    }
 
-    removeItemFromUI(e.target.parentElement)
+}
+
+const setItemToEdit = (item) =>{
+
+    list
+    .querySelectorAll("li")
+    .forEach(i=>i.classList.remove("editMode"))
+
+    isEditMode = true;
+    item.target.classList.add("editMode");
+    frmBtn.innerHTML = "<i class='fas fa-pen'></i> Update Item";
+    frmBtn.style.backgroundColor = "green";
+    itemInput.value = item.target.textContent;
 
 }
 
 const removeItemFromUI = (item) =>{
-    if(item.classList.contains("remove-item")){
+   
         if(confirm("Are you sure?")){
 
             //remove item from DOM/UI
-            item.parentElement.remove();
+            item.remove();
 
             //remove item from local storage 
-            removeItemFromStorage(item);
-            
+            removeItemFromStorage(item.firstChild.textContent);
 
         }
                 checkUI();
-    }
 }
 
 
 const removeItemFromStorage = (item) =>{
     itemsFromStorage = getItemsFromStorage();
 
+    //mine
     // indexToRemove = itemsFromStorage.indexOf(item.target.parentElement.parentElement.firstChild.textContent);
     // itemsFromStorage.splice(indexToRemove, 1);
-    // localStorage.setItem("items", JSON.stringify(itemsFromStorage));
 
-    itemsFromStorage = itemsFromStorage.filter(data => data !== item.parentElement.firstChild.textContent)
-
+    //brad traversy
+    itemsFromStorage = itemsFromStorage.filter(data => data !== item)
+    
     localStorage.setItem("items",JSON.stringify(itemsFromStorage));
 
 
@@ -184,6 +221,8 @@ clearBtn.addEventListener("click", clearItems);
 
 searchField.addEventListener("input", filterItems);
 
-displayItems();
 
+// Onload Function Calls
+
+displayItems();
 checkUI();
