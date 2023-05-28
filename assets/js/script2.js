@@ -244,7 +244,10 @@ clearBtn.addEventListener("click", clearItems);
 searchField.addEventListener("input", filterItems);
 
 
-// Onload Function Calls
+//
+// ONLOAD - FUNCTION CALLS
+//
+
 
 displayItems();
 checkUI();
