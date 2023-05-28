@@ -43,12 +43,8 @@ const onAddItemSubmit = (e) =>{
         return;
     }
 
-    if(itemsFromStorage.includes(itemInput.value)){
-        alert("Item already exists in the list")
-
-        return;
-    }
-
+    if(checkIfItemExists(itemInput.value)){
+ 
     //check if in edit mode
 
     if(isEditMode){
@@ -57,7 +53,16 @@ const onAddItemSubmit = (e) =>{
         removeItemFromStorage(itemToEdit.textContent);
         itemToEdit.remove();
        
+    }else{
+        alert("Item already exists");
+
+        itemInput.value = "";
+
+        return;
     }
+    }
+    
+
 
     // collect form data
     const formData = new FormData(form);
@@ -71,6 +76,13 @@ const onAddItemSubmit = (e) =>{
     itemInput.value = "";
 
     checkUI();
+}
+
+const checkIfItemExists = (item) => {
+
+    let itemsFromStorage = getItemsFromStorage();
+
+    return (itemsFromStorage.includes(item))
 }
 
 
