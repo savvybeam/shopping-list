@@ -1,3 +1,6 @@
+// 
+// DOM ITEMS DECLARATION
+// 
 const form = document.getElementById("my-form");
 const list = document.getElementById("list-items");
 const itemInput = document.getElementById("item-input");
@@ -7,7 +10,9 @@ const searchField = document.getElementById("search-input");
 let itemsFromStorage;
 let isEditMode = false;
 
-// functions
+// 
+// FUNCTIONS
+// 
 
 const displayItems = () =>{
 
@@ -226,8 +231,9 @@ const filterItems = (e) =>{
 
 }
 
-
-// Event Listerners
+// 
+// EVENT LISTENERS
+// 
 
 form.addEventListener("submit", onAddItemSubmit);
 
