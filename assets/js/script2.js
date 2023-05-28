@@ -53,8 +53,10 @@ const onAddItemSubmit = (e) =>{
 
     if(isEditMode){
         const itemToEdit = list.querySelector(".editMode");
-        itemToEdit.remove();
+        
         removeItemFromStorage(itemToEdit.textContent);
+        itemToEdit.remove();
+       
     }
 
     // collect form data
@@ -189,8 +191,10 @@ const checkUI = () =>{
         searchField.style.display = "block";
         clearBtn.style.display = "block";
     };
+    frmBtn.innerHTML = "<i class='fas fa-plus'></i> Add Item";
+    frmBtn.style.backgroundColor = "black";
 
-    
+    isEditMode = false;
 }
 
 const filterItems = (e) =>{
