@@ -1,5 +1,5 @@
 // 
-// DOM ITEMS DECLARATION
+// VARIABLE DECLARATIONS
 // 
 const form = document.getElementById("my-form");
 const list = document.getElementById("list-items");
